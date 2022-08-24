@@ -1,14 +1,17 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect } from 'react';
 import Header from './component/Header/Header';
 import InputForm from './component/InputForm/InputForm';
 import CityList from './component/CityList/CityList';
+import { useSelector } from 'react-redux';
 
 
 function App() {
-  const [historyCities, setHistoryCities] = useState([])
+  const historyCities = useSelector(state => state.history.history);
 
-  console.log('history', historyCities)
+  useEffect(() => {
+    localStorage.setItem('historyCities', JSON.stringify(historyCities));
+  }, [historyCities]);
 
   return (
     <div className="App">
@@ -16,10 +19,10 @@ function App() {
         <Header/>
       </div>
       <div className="form">
-        <InputForm historyCities={historyCities} setHistoryCities={setHistoryCities} />
+        <InputForm />
       </div>
       <div className="list">
-        <CityList historyCities={historyCities} />
+        <CityList />
       </div>
       
     </div>
