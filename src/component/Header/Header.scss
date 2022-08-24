@@ -1,3 +1,18 @@
 .header {
+  grid-area: header;
   display: flex;
+  // width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  height: 60px;
+
+  &__current {
+    display: flex;
+    gap: 20px;
+    color: rgb(248, 186, 14);
+    font-size: 30px;
+    font-style: italic;
+    font-weight: 600;
+  }
 }

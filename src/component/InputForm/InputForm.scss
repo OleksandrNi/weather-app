@@ -1,0 +1,40 @@
+.form {
+  grid-area: form;
+  display: flex;
+  flex-direction: column;
+  
+  
+  &__data {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: #000 solid 0.5px;
+    border-radius: 5px;
+    padding: 10px;
+    background: rgba(235, 217, 241, 0.5);
+
+    &-date {
+      align-self: flex-start;
+    }
+
+    &-current {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &-icon {
+      width: 100px;
+    }
+
+    &-place {
+      font-size: 20px;
+      font-style: italic;
+      font-weight: 700;
+    }
+
+    &-temperature {
+      font-size: 32px;
+    }
+  }
+}
