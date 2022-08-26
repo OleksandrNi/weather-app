@@ -8,11 +8,13 @@ import { deleteCityInHistory } from '../../store/historySlice';
 import { callCityFromHistory } from '../../store/currentCitySlice';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import axios from 'axios';
+import './CityCard.scss';
 
 
 const CityCard = (city) => {
-  const [cityListWeather, setCityListWeather] = useState()
+  const [cityListWeather, setCityListWeather] = useState();
   const dispatch = useDispatch();
 
 
@@ -22,40 +24,38 @@ const CityCard = (city) => {
         resp => setCityListWeather(resp.data)
       )
     }
-  },[])
+  },[]);
 
   const deleteCity = () => {
-    dispatch(deleteCityInHistory(city.city.lat))
+    dispatch(deleteCityInHistory(city.city.lat));
   }
 
   const callCity = () => {
-    dispatch(callCityFromHistory(city.city))
+    dispatch(callCityFromHistory(city.city));
   }
-
+  console.log('cityCard', city.city)
+  console.log('cityWheather', cityListWeather)
   return (
-    <div>
-      {cityListWeather && <Card sx={{ maxWidth: 200 }}>
-        <CardMedia
-          component="img"
-          height="140"
-          image={`http://openweathermap.org/img/w/${cityListWeather.weather[0].icon}.png`}
-          alt="weather logo"
-        />
+    <div className='card'>
+      {cityListWeather && <Card sx={{ width: 200, background: 'rgba(235, 217, 241, 0.1)' }}>
+        <div className='card__button'>
+          <Button onClick={deleteCity} size="medium" sx={{color: 'orange', fontWeight: 'bold' }}><HighlightOffIcon/></Button>
+        </div>
+        <div className='card__weather'  onClick={callCity}>
+          <div className='card__weather-icon'>
+            <img src={`http://openweathermap.org/img/w/${cityListWeather.weather[0].icon}.png`} alt="weather logo" />
+          </div>
+          <div className='card__weather-temp'>
+          {cityListWeather.main.temp} °C
+          </div>
+        </div>
+        
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div" sx={{ height: 40, mb: '25px' }}>
-            {cityListWeather.name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Temp ''
-            {city.city.lat}
+          <Typography onClick={callCity} gutterBottom variant="h5" component="div" sx={{ height: 40, cursor: 'pointer' }}>
+            {city.city.name}, {city.city.country}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button onClick={deleteCity} size="small">Delete</Button>
-        </CardActions>
-        <CardActions>
-          <Button onClick={callCity} size="small">Call</Button>
-        </CardActions>
+        
       </Card>}
     </div>
   )

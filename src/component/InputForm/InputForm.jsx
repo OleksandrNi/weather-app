@@ -9,6 +9,10 @@ import { addCityInHistory } from '../../store/historySlice';
 import { addCurrentCity } from '../../store/currentCitySlice';
 import Button from '@mui/material/Button';
 import Autocomplete from '@mui/material/Autocomplete';
+import ThermostatIcon from '@mui/icons-material/Thermostat';
+import OpacityIcon from '@mui/icons-material/Opacity';
+import CompressIcon from '@mui/icons-material/Compress';
+import AirIcon from '@mui/icons-material/Air';
 
 const InputForm = () => {
   const currentCity = useSelector(state => state.currentCity.currentCity);
@@ -51,6 +55,20 @@ const InputForm = () => {
       dispatch(addCityInHistory(currentCity));
   };
 
+  console.log('input', currentWeather)
+
+  // const style = {
+  //   my: 0.3,
+  //   "& label.Mui-focused": {
+  //     color: "rgb(123, 76, 204, 0.1)"
+  //   },
+  //   "& .MuiOutlinedInput-root": {
+  //     "&.Mui-focused fieldset": {
+  //       borderColor: "rgb(123, 76, 204)"
+  //     }
+  //   }
+  // }
+
   return (
     <div className='form'>
       <form className='form__input'>
@@ -62,31 +80,33 @@ const InputForm = () => {
           renderInput={(params) => {
             return (
               <TextField
-                {...params}
+              {...params}
                 onChange={e => setQueryInput(e.target.value)}
                 variant="outlined"
-                label="City"
+                label="City search"
+                
               />
             );
           }}
-          sx={{ mb: 2, minWidth: 200 }}
+          sx={{ mb: 2, minWidth: 200, color: 'white', background: 'rgba(235, 217, 241, 0.1)' }}
+          // sx={style}
         />
       </form>
 
       {currentWeather && <div className='form__data'>
-        <div className='form__data-date'>{new Date().toLocaleString()}</div>
         <div className='form__data-place'>{currentCity.name}, {currentCity.country}</div>
         <div className='form__data-current'>
           <img className='form__data-icon' src={`http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png`} alt="icon" />
           <div className='form__data-temperature'>{currentWeather.main.temp} °C</div> 
         </div>
-        <div className='form__data-feels'>feels like {currentWeather.main.feels_like} °C</div> 
-        <div className='form__data-max'>Max temperature {currentWeather.main.temp_max} °C</div> 
-        <div className='form__data-min'>Min temperature {currentWeather.main.temp_min} °C</div> 
-        <div className='form__data-pressure'>Pressure {currentWeather.main.pressure} kPa</div> 
-        <div className='form__data-humidity'>Humidity {currentWeather.main.humidity} %</div> 
+        <div className='form__data-desc'><ThermostatIcon /> Feels {currentWeather.main.feels_like} °C</div> 
+        <div className='form__data-desc'><AirIcon /> Wind {currentWeather.wind.speed} m/s</div> 
+        <div className='form__data-desc'><CompressIcon /> Pressure {currentWeather.main.pressure} kPa</div> 
+        <div className='form__data-desc'><OpacityIcon /> Humidity {currentWeather.main.humidity} %</div> 
+        <div className='form__data-desc'><ThermostatIcon /> Max {currentWeather.main.temp_max} °C</div> 
+        <div className='form__data-desc'><ThermostatIcon /> Min {currentWeather.main.temp_min} °C</div> 
 
-        <Button onClick={addInListCity}>add city</Button>
+        <Button onClick={addInListCity} variant="outlined">add city</Button>
 
       </div>}
 

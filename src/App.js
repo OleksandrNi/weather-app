@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { useEffect } from 'react';
 import Header from './component/Header/Header';
 import InputForm from './component/InputForm/InputForm';

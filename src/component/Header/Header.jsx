@@ -5,6 +5,7 @@ import ThermostatIcon from '@mui/icons-material/Thermostat';
 import OpacityIcon from '@mui/icons-material/Opacity';
 import CompressIcon from '@mui/icons-material/Compress';
 import AirIcon from '@mui/icons-material/Air';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const Header = () => {
   const [nativeCity, setNativeCity] = useState();
@@ -26,17 +27,21 @@ const Header = () => {
     console.log(message)
   }
 
+  console.log('nativeCity', nativeCity)
+
   return (
     <div className='header'>
       {nativeCity 
        ? <div className='header__current'>
+        <div><LocationOnIcon /></div>
         <div>{nativeCity.name}</div>
         <div><ThermostatIcon />{nativeCity.main.temp} °C</div>
         <div><OpacityIcon />{nativeCity.main.humidity} %</div>
         <div><CompressIcon />{nativeCity.main.pressure} kPa</div>
         <div><AirIcon />{nativeCity.wind.speed} m/s</div>
+        <div><img src={`http://openweathermap.org/img/w/${nativeCity.weather[0].icon}.png`} alt="weather logo" /></div>
       </div>
-      : <div className='header-welcome'>Welcome</div>
+      : <div className='header__welcome'>Weather App</div>
       }
     </div>
   )

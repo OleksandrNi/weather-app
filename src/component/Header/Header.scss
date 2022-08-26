@@ -1,16 +1,35 @@
 .header {
   grid-area: header;
   display: flex;
-  // width: 100%;
   align-items: center;
   justify-content: center;
-  margin: 20px;
+  margin: 20px 0 40px;
   height: 60px;
 
   &__current {
     display: flex;
     gap: 20px;
-    color: rgb(248, 186, 14);
+    flex-grow: 1;
+    align-items: center;
+    border: 1px solid grey;
+    background: rgba(235, 217, 241, 0.2);
+    color: #fff;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: 600;
+
+    @media screen and (max-width: 740px) {
+      font-size: 14px;
+      gap: 10px;
+    }
+
+    @media screen and (max-width: 400px) {
+      font-size: 10px;
+    }
+  }
+
+  &__welcome {
+    color: #fff;
     font-size: 30px;
     font-style: italic;
     font-weight: 600;
