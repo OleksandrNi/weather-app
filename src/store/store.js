@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import historyReducer from './historySlice';
 import currentCityReducer from './currentCitySlice';
+import historyReducer from './historySlice';
 
 export default configureStore({
   reducer: {

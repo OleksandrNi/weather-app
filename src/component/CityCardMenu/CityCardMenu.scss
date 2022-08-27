@@ -1,6 +1,5 @@
-.card {
+.cardMenu {
   display: flex;
-  flex-direction: column;
   background: rgba(235, 217, 241, 0.2);
 
   &__button {
@@ -16,9 +15,9 @@
 
     &-temp {
       cursor: pointer;
-      font-size: 24px;
+      font-size: 18px;
       font-weight: bold;
-      color: white;
+      color: #000;
     }
   }
 }

@@ -8,11 +8,11 @@ const historySlice = createSlice({
   reducers: {
     addCityInHistory(state, action) {
       if (!state.history.find(city => city.lat === action.payload.lat)) {
-      state.history.push(action.payload)
+      state.history.unshift(action.payload);
       }
     },
     deleteCityInHistory(state, action) {
-      state.history = state.history.filter(city => city.lat !== action.payload)
+      state.history = state.history.filter(city => city.lat !== action.payload);
     }
   }
 });

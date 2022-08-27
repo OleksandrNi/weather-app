@@ -1,18 +1,18 @@
 import './InputForm.scss';
-import { useSelector, useDispatch } from 'react-redux';
 import React from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import cities from 'cities.json';
-import TextField from '@mui/material/TextField';
-import { useEffect, useState } from 'react';
-import { addCityInHistory } from '../../store/historySlice';
 import { addCurrentCity } from '../../store/currentCitySlice';
-import Button from '@mui/material/Button';
-import Autocomplete from '@mui/material/Autocomplete';
+import { addCityInHistory } from '../../store/historySlice';
 import ThermostatIcon from '@mui/icons-material/Thermostat';
-import OpacityIcon from '@mui/icons-material/Opacity';
 import CompressIcon from '@mui/icons-material/Compress';
+import Autocomplete from '@mui/material/Autocomplete';
+import OpacityIcon from '@mui/icons-material/Opacity';
+import TextField from '@mui/material/TextField';
 import AirIcon from '@mui/icons-material/Air';
+import Button from '@mui/material/Button';
 
 const InputForm = () => {
   const currentCity = useSelector(state => state.currentCity.currentCity);
@@ -21,7 +21,6 @@ const InputForm = () => {
   const [queryInput, setQueryInput] = useState('');
   const [searchCities, setSearchCities] = useState([]);
   const [currentWeather, setCurrentWeather] = useState('');
-  const [weekWeather, setWeekWeather] = useState('');
 
   const city = cities.filter(city => city.name.toLowerCase().includes(queryInput));
 
@@ -29,16 +28,8 @@ const InputForm = () => {
     if (currentCity) {
       axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${currentCity.lat}&lon=${currentCity.lng}&units=metric&appid=539935f05212a1e4342dec030797e92e`).then(
         resp => setCurrentWeather(resp.data)
-      )
-    }
-  },[currentCity]);
-  
-  useEffect(() => {
-    if (currentCity) {
-      axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${currentCity.lat}&lon=${currentCity.lng}&units=metric&appid=539935f05212a1e4342dec030797e92e`).then(
-        resp => setWeekWeather(resp.data.list)
-      )
-    }
+      );
+    };
   },[currentCity]);
 
   useEffect(() => {
@@ -55,20 +46,6 @@ const InputForm = () => {
       dispatch(addCityInHistory(currentCity));
   };
 
-  console.log('input', currentWeather)
-
-  // const style = {
-  //   my: 0.3,
-  //   "& label.Mui-focused": {
-  //     color: "rgb(123, 76, 204, 0.1)"
-  //   },
-  //   "& .MuiOutlinedInput-root": {
-  //     "&.Mui-focused fieldset": {
-  //       borderColor: "rgb(123, 76, 204)"
-  //     }
-  //   }
-  // }
-
   return (
     <div className='form'>
       <form className='form__input'>
@@ -83,13 +60,10 @@ const InputForm = () => {
               {...params}
                 onChange={e => setQueryInput(e.target.value)}
                 variant="outlined"
-                label="City search"
-                
               />
-            );
+            )
           }}
           sx={{ mb: 2, minWidth: 200, color: 'white', background: 'rgba(235, 217, 241, 0.1)' }}
-          // sx={style}
         />
       </form>
 
@@ -107,11 +81,9 @@ const InputForm = () => {
         <div className='form__data-desc'><ThermostatIcon /> Min {currentWeather.main.temp_min} °C</div> 
 
         <Button onClick={addInListCity} variant="outlined">add city</Button>
-
       </div>}
-
     </div>
   )
-}
+};
 
 export default InputForm;
