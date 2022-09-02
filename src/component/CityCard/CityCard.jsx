@@ -11,7 +11,7 @@ import Card from '@mui/material/Card';
 import axios from 'axios';
 
 
-const CityCard = (city) => {
+export const CityCard = (city) => {
   const [cityListWeather, setCityListWeather] = useState();
   const dispatch = useDispatch();
 

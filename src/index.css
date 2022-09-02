@@ -5,13 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-image: url(./component/media/panoramic-view-field-covered-grass-trees-sunlight-cloudy-sky.jpg); */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url(../src/component/media/Sunlit\ wave.jfif);
-  /* background-color: rgb(56, 46, 110); */
-  padding: 20px;
+  background-color: #ebebeb;
 }
 
 code {

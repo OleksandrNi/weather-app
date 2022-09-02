@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 
 
-const CityCardMenu = (city) => {
+export const CityCardMenu = (city) => {
   const [cityListWeather, setCityListWeather] = useState();
   const dispatch = useDispatch();
 
@@ -60,5 +60,3 @@ const CityCardMenu = (city) => {
     </div>
   )
 };
-
-export default CityCardMenu

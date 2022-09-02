@@ -14,7 +14,7 @@ import TextField from '@mui/material/TextField';
 import AirIcon from '@mui/icons-material/Air';
 import Button from '@mui/material/Button';
 
-const InputForm = () => {
+export const InputForm = () => {
   const currentCity = useSelector(state => state.currentCity.currentCity);
   const dispatch = useDispatch();
 
@@ -85,5 +85,3 @@ const InputForm = () => {
     </div>
   )
 };
-
-export default InputForm;

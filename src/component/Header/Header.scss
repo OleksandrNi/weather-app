@@ -3,18 +3,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px 0 40px;
-  height: 60px;
+  // margin: 20px 0 40px;
+  margin-bottom: 40px;
+  // height: 60px;
+  background-color: #000;
 
   &__current {
     display: flex;
     gap: 20px;
     flex-grow: 1;
     align-items: center;
-    border: 1px solid grey;
-    background: rgba(235, 217, 241, 0.2);
+    // border: 1px solid grey;
+    // background: rgba(235, 217, 241, 0.2);
     color: #fff;
-    font-size: 30px;
+    font-size: 20px;
     font-style: italic;
     font-weight: 600;
 

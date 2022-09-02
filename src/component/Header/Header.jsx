@@ -7,7 +7,7 @@ import CompressIcon from '@mui/icons-material/Compress';
 import OpacityIcon from '@mui/icons-material/Opacity';
 import AirIcon from '@mui/icons-material/Air';
 
-const Header = () => {
+export const Header = () => {
   const [nativeCity, setNativeCity] = useState();
 
   useEffect(() => {
@@ -18,7 +18,8 @@ const Header = () => {
 
   function success({ coords }) {
     const { latitude, longitude } = coords;
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=539935f05212a1e4342dec030797e92e`).then(
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=539935f05212a1e4342dec030797e92e`)
+    .then(
       resp => setNativeCity(resp.data)
     );
   };
@@ -44,5 +45,3 @@ const Header = () => {
     </div>
   )
 };
-
-export default Header;

@@ -1,14 +1,14 @@
 import './CityList.scss';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import CityCard from '../CityCard/CityCard';
-import CityCardMenu from '../CityCardMenu/CityCardMenu';
+import {CityCard} from '../CityCard';
+import {CityCardMenu} from '../CityCardMenu';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Box from '@mui/material/Box';
 
-const CityList = () => {
+export const CityList = () => {
 
   const historyCities = useSelector(state => state.history.history);
   
@@ -70,5 +70,3 @@ const CityList = () => {
     </div>
   )
 };
-
-export default CityList;
