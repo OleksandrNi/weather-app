@@ -1,19 +1,8 @@
 .App {
-  display: grid;
-  grid-template-areas: 
-  "header header"
-  "form list"
-  "form list";
-  grid-template-columns: 1fr 2fr;
+  display: flex;
   text-align: center;
-  
-  @media screen and (max-width: 600px) {
-    grid-template-areas: 
-    "header"
-    "form"
-    "list";
-    grid-template-columns: 1fr;
-  }
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 

@@ -1,27 +1,29 @@
 .form {
-  grid-area: form;
   display: flex;
-  flex-direction: column;
   margin: 0 10px;
   
   
   &__data {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
     margin-bottom: 20px;
     border: #000 solid 0.5px;
     border-radius: 5px;
     padding: 10px;
     background: rgba(235, 217, 241, 0.5);
 
-    &-date {
-      align-self: flex-start;
+    &-right {
+      margin-right: 80px;
+      margin-top: 10px;
     }
 
     &-current {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
     }
 
     &-icon {
@@ -46,7 +48,7 @@
     &-temperature {
       font-size: 50px;
       font-weight: 500;
-      color: #fff;
+      color: #000;
 
       @media screen and (max-width: 740px) {
         font-size: 40px;
@@ -59,14 +61,13 @@
 
     &-desc {
       display: flex;
+      font-size: 24px;
       margin-bottom: 2px;
-      background: rgba(235, 217, 241, 0.8);
       color: #000;
+
+      @media screen and (max-width: 420px) {
+        font-size: 16px;
+      }
     }
   }
-}
-
-.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
-  background: rgba(235, 217, 241, 0.5);
-  color: #fff;
 }

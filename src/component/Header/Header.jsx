@@ -1,6 +1,12 @@
 import './Header.scss';
+
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setNativeCity } from '../../store/nativeCitySlice';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { CityMenu } from '../CityMenu';
+import { InputForm } from '../InputForm/InputForm';
+
 import ThermostatIcon from '@mui/icons-material/Thermostat';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CompressIcon from '@mui/icons-material/Compress';
@@ -8,7 +14,8 @@ import OpacityIcon from '@mui/icons-material/Opacity';
 import AirIcon from '@mui/icons-material/Air';
 
 export const Header = () => {
-  const [nativeCity, setNativeCity] = useState();
+  const dispatch = useDispatch();
+  const nativeCity = useSelector(state => state.nativeCity.nativeCity);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success, error, {
@@ -20,7 +27,7 @@ export const Header = () => {
     const { latitude, longitude } = coords;
     axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=539935f05212a1e4342dec030797e92e`)
     .then(
-      resp => setNativeCity(resp.data)
+      resp => dispatch(setNativeCity(resp.data))
     );
   };
   
@@ -29,7 +36,7 @@ export const Header = () => {
   };
 
   return (
-    <div className='header'>
+    <div className='header__content'>
       {nativeCity 
        ? <div className='header__current'>
         <div><LocationOnIcon /></div>
@@ -42,6 +49,8 @@ export const Header = () => {
       </div>
       : <div className='header__welcome'>Weather App</div>
       }
+      <InputForm />
+      <CityMenu />
     </div>
   )
 };

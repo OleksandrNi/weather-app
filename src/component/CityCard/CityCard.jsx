@@ -1,9 +1,10 @@
 import './CityCard.scss';
+
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { deleteCityInHistory, addCityInHistory } from '../../store/historySlice';
 import { callCityFromHistory } from '../../store/currentCitySlice';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -37,9 +38,6 @@ export const CityCard = (city) => {
   return (
     <div className='card'>
       {cityListWeather && <Card sx={{ width: 200, background: 'rgba(235, 217, 241, 0.1)' }}>
-        <div className='card__button'>
-          <Button onClick={deleteCity} size="medium" sx={{color: 'orange', fontWeight: 'bold' }}><HighlightOffIcon/></Button>
-        </div>
         <div className='card__weather'  onClick={callCity}>
           <div className='card__weather-icon'>
             <img src={`http://openweathermap.org/img/w/${cityListWeather.weather[0].icon}.png`} alt="weather logo" />
@@ -54,6 +52,10 @@ export const CityCard = (city) => {
             {city.city.name}, {city.city.country}
           </Typography>
         </CardContent>
+
+        <div className='card__button'>
+          <Button onClick={deleteCity} size="medium" sx={{color: 'black', fontWeight: 'bold' }}>delete</Button>
+        </div>
       </Card>}
     </div>
   )

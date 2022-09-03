@@ -1,10 +1,11 @@
 import './CityCardMenu.scss';
+
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { deleteCityInHistory, addCityInHistory } from '../../store/historySlice';
 import { callCityFromHistory } from '../../store/currentCitySlice';
 import axios from 'axios';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -31,7 +32,6 @@ export const CityCardMenu = (city) => {
     dispatch(callCityFromHistory(city.city));
     dispatch(deleteCityInHistory(city.city.lat));
     dispatch(addCityInHistory(city.city));
-    
   }
 
   return (
@@ -39,16 +39,18 @@ export const CityCardMenu = (city) => {
       {cityListWeather && <Card sx={{ width: 400, background: 'rgba(235, 217, 241, 0.1)' }}>
         <CardContent sx={{ display: 'flex', justifyContent: 'space-between', padding: '0 10px' }}>
           <div>
-            <Typography onClick={callCity} gutterBottom variant="h8" component="div" sx={{ height: 8, cursor: 'pointer' }}>
+            <Typography onClick={callCity} gutterBottom variant="h8" component="div" sx={{ height: 8, cursor: 'pointer', fontWeight: 'bold' }}>
               {city.city.name}, {city.city.country}
             </Typography>
           </div>
           <div className='cardMenu__button'>
-            <Button onClick={deleteCity} size="small" sx={{color: 'orange', fontWeight: 'bold' }}><HighlightOffIcon/></Button>
+            <Button onClick={deleteCity} size="small" sx={{color: 'black', fontWeight: 'bold' }}>
+              delete
+            </Button>
           </div>
         </CardContent>
 
-        <div className='cardMenu__weather'  onClick={callCity}>
+        <div className='cardMenu__weather' onClick={callCity}>
           <div className='cardMenu__weather-icon'>
             <img src={`http://openweathermap.org/img/w/${cityListWeather.weather[0].icon}.png`} alt="weather logo" />
           </div>

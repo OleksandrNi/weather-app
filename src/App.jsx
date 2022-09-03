@@ -1,9 +1,10 @@
 import './App.scss';
+
 import { useEffect } from 'react';
-import {Header} from './component/Header';
-import {InputForm} from './component/InputForm';
-import {CityList} from './component/CityList';
 import { useSelector } from 'react-redux';
+import {Header} from './component/Header';
+import {CurrentCity} from './component/CurrentCity';
+import {CityList} from './component/CityList';
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
         <Header/>
       </div>
       <div className="form">
-        <InputForm />
+        <CurrentCity />
       </div>
       <div className="list">
         <CityList />
