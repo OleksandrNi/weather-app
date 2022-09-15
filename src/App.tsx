@@ -1,14 +1,14 @@
 import './App.scss';
 
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from './hook';
 import {Header} from './component/Header';
 import {CurrentCity} from './component/CurrentCity';
 import {CityList} from './component/CityList';
 
 
 function App() {
-  const historyCities = useSelector(state => state.history.history);
+  const historyCities = useAppSelector(state => state.history.history);
 
   useEffect(() => {
     localStorage.setItem('historyCities', JSON.stringify(historyCities));

@@ -2,7 +2,7 @@ import './CurrentCity.scss';
 
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '../../hook';
 import { addCityInHistory } from '../../store/historySlice';
 import axios from 'axios';
 
@@ -11,11 +11,13 @@ import CompressIcon from '@mui/icons-material/Compress';
 import OpacityIcon from '@mui/icons-material/Opacity';
 import AirIcon from '@mui/icons-material/Air';
 import Button from '@mui/material/Button';
+import { setNativeCity } from '../../store/nativeCitySlice';
 
-export const CurrentCity = () => {
-  const currentCity = useSelector(state => state.currentCity.currentCity);
-  const nativeCity = useSelector(state => state.nativeCity.nativeCity);
-  const dispatch = useDispatch();
+export const CurrentCity: React.FC = () => {
+  const currentCity = useAppSelector(state => state.currentCity.currentCity);
+  const nativeCity = useAppSelector(state => state.nativeCity.nativeCity);
+  const historyCities = useAppSelector(state => state.history.history);
+  const dispatch = useAppDispatch();
   
   const [currentWeather, setCurrentWeather] = useState(nativeCity);
 
@@ -26,11 +28,16 @@ export const CurrentCity = () => {
   },[nativeCity])
 
   useEffect(() => {
-    if (currentCity) {
+    if (currentCity.name.length > 0) {
       axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${currentCity.lat}&lon=${currentCity.lng}&units=metric&appid=539935f05212a1e4342dec030797e92e`)
       .then(
         resp => setCurrentWeather(resp.data)
-      );
+      )
+    } else {
+      axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${historyCities[0].lat}&lon=${historyCities[0].lng}&units=metric&appid=539935f05212a1e4342dec030797e92e`)
+      .then(
+        resp => setCurrentWeather(resp.data)
+      )
     }
   },[currentCity]);
 
@@ -44,7 +51,7 @@ export const CurrentCity = () => {
         <div className="form__data-left">
           <div className='form__data-place'>{currentWeather.name}, {currentWeather.sys.country}</div>
           <div className='form__data-current'>
-            <img className='form__data-icon' src={`http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png`} alt="icon" />
+            <img className='form__data-icon' src={currentWeather.weather[0].icon && `http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png`} alt="icon" />
             <div className='form__data-temperature'>{currentWeather.main.temp} °C</div> 
           </div>
           {currentCity && <Button onClick={addInListCity} sx = {{color: "black", fontWeight: "bold"}}>add city in list</Button>}

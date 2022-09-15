@@ -1,12 +1,12 @@
 import './CityList.scss';
 
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hook';
 import {CityCard} from '../CityCard';
 
-export const CityList = () => {
+export const CityList: React.FC = () => {
 
-  const historyCities = useSelector(state => state.history.history);
+  const historyCities = useAppSelector(state => state.history.history);
 
   const historyCitiesLimit = historyCities.slice(0, 3);
 

@@ -1,7 +1,7 @@
 import './Header.scss';
 
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAppSelector, useAppDispatch } from '../../hook';
 import { setNativeCity } from '../../store/nativeCitySlice';
 import axios from 'axios';
 import { CityMenu } from '../CityMenu';
@@ -13,9 +13,9 @@ import CompressIcon from '@mui/icons-material/Compress';
 import OpacityIcon from '@mui/icons-material/Opacity';
 import AirIcon from '@mui/icons-material/Air';
 
-export const Header = () => {
-  const dispatch = useDispatch();
-  const nativeCity = useSelector(state => state.nativeCity.nativeCity);
+export const Header: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const nativeCity = useAppSelector(state => state.nativeCity.nativeCity);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success, error, {
@@ -23,21 +23,21 @@ export const Header = () => {
     });
   },[]);
 
-  function success({ coords }) {
-    const { latitude, longitude } = coords;
+  function success(position: { coords: { latitude: number; longitude: number; }}) {
+    const { latitude, longitude} = position.coords;
     axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=539935f05212a1e4342dec030797e92e`)
     .then(
       resp => dispatch(setNativeCity(resp.data))
     );
   };
   
-  function error({ message }) {
-    console.log(message);
-  };
+  const error = (e: { code: number; message: string; }) => {
+    console.warn(`ERROR(${e.code}): ${e.message}`);
+  }
 
   return (
     <div className='header__content'>
-      {nativeCity 
+      {nativeCity.name.length > 0 
        ? <div className='header__current'>
         <div><LocationOnIcon /></div>
         <div>{nativeCity.name}</div>

@@ -11,28 +11,58 @@ import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import axios from 'axios';
 
+type City = {
+  country: string;
+  name: string;
+  lat: string;
+  lng: string;
+}
 
-export const CityCard = (city) => {
-  const [cityListWeather, setCityListWeather] = useState();
+type CityCardProps = {
+  city: City;
+}
+
+interface WeatherCity {
+  name: string;
+  sys: {
+    country: string
+  };
+  main: {
+    feels_like: string;
+    temp: number,
+    humidity: number,
+    pressure: number,
+    temp_max: string;
+    temp_min: string;
+  }
+  wind: {
+    speed: number
+  }
+  weather: [{
+    icon: string,
+  }]
+}
+
+export const CityCard: React.FC<CityCardProps> = ({city}) => {
+  const [cityListWeather, setCityListWeather] = useState<WeatherCity>();
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     if (city) {
-      axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${city.city.lat}&lon=${city.city.lng}&units=metric&appid=539935f05212a1e4342dec030797e92e`).then(
+      axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lng}&units=metric&appid=539935f05212a1e4342dec030797e92e`).then(
         resp => setCityListWeather(resp.data)
       )
     };
   },[]);
 
   const deleteCity = () => {
-    dispatch(deleteCityInHistory(city.city.lat));
+    dispatch(deleteCityInHistory(city.lat));
   };
 
   const callCity = () => {
-    dispatch(callCityFromHistory(city.city));
-    dispatch(deleteCityInHistory(city.city.lat));
-    dispatch(addCityInHistory(city.city));
+    dispatch(callCityFromHistory(city));
+    dispatch(deleteCityInHistory(city.lat));
+    dispatch(addCityInHistory(city));
   };
 
   return (
@@ -49,7 +79,7 @@ export const CityCard = (city) => {
         
         <CardContent>
           <Typography onClick={callCity} gutterBottom variant="h5" component="div" sx={{ height: 40, cursor: 'pointer' }}>
-            {city.city.name}, {city.city.country}
+            {city.name}, {city.country}
           </Typography>
         </CardContent>
 

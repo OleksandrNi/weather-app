@@ -1,26 +1,33 @@
 import './InputForm.scss';
 
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import cities from 'cities.json';
+import { useAppDispatch } from '../../hook';
+import { citiesList } from './cities';
 import { addCurrentCity } from '../../store/currentCitySlice';
 
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 
-export const InputForm = () => {
-  const dispatch = useDispatch();
+interface City {
+  country: string;
+  name: string;
+  lat: string;
+  lng: string;
+}
+
+export const InputForm: React.FC = () => {
+  const dispatch = useAppDispatch();
 
   const [queryInput, setQueryInput] = useState('');
-  const [searchCities, setSearchCities] = useState([]);
-
-  const city = cities.filter(city => city.name.toLowerCase().includes(queryInput));
-
+  const [searchCities, setSearchCities] = useState<City[]>([]);
+  
+  const city: City[] = citiesList.filter(city => city.name.toLowerCase().includes(queryInput));
+  
   useEffect(() => {
     setSearchCities(city.slice(0, 10));
   },[queryInput]);
 
-  const addCity = (value) => {
+  const addCity = (value: City | null) => {
     if(value) {
       dispatch(addCurrentCity(value));
     };
@@ -34,7 +41,7 @@ export const InputForm = () => {
           onChange={(event, value) => {addCity(value)}}
           options={searchCities}
           id="autocomplete-1"
-          getOptionLabel={(option) => `${option.name}, ${option.country}`}
+          getOptionLabel={(option: City) => `${option.name}, ${option.country}`}
           renderInput={(params) => {
             return (
               <TextField
