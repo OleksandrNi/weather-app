@@ -11,14 +11,7 @@ import List from '@mui/material/List';
 import Box from '@mui/material/Box';
 import Badge from '@mui/material/Badge';
 
-type Anchor = string
-
-type City = {
-  country: string;
-  name: string;
-  lat: string;
-  lng: string;
-}
+type Anchor = string;
 
 export const CityMenu: React.FC = () => {
 
@@ -28,7 +21,7 @@ export const CityMenu: React.FC = () => {
     right: false,
   });
 
-  const anchor = 'right'
+  const anchor = 'right';
 
   const toggleDrawer = (open: boolean) => () => {
     setState({ ...state, [anchor]: open });
@@ -52,7 +45,6 @@ export const CityMenu: React.FC = () => {
   return (
     <div>
       {historyCities.length && <div>
-
         <React.Fragment>
           <Badge badgeContent={historyCities.length} color="primary">
             <Button onClick={toggleDrawer(true)} sx={{color: 'white', fontWeight: 'bold', fontSize: '20px' }}>
@@ -67,7 +59,6 @@ export const CityMenu: React.FC = () => {
             {list(anchor)}
           </Drawer>
         </React.Fragment>
-
       </div>}
     </div>
   )

@@ -5,47 +5,15 @@ import { useAppDispatch } from '../../hook';
 import { deleteCityInHistory, addCityInHistory } from '../../store/historySlice';
 import { callCityFromHistory } from '../../store/currentCitySlice';
 import axios from 'axios';
+import { Weather, CityCardProps } from '../../types';
 
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 
-type City = {
-  country: string;
-  name: string;
-  lat: string;
-  lng: string;
-}
-
-type CityCardProps = {
-  city: City;
-} 
-
-interface WeatherCity {
-  name: string;
-  sys: {
-    country: string
-  };
-  main: {
-    feels_like: string;
-    temp: number,
-    humidity: number,
-    pressure: number,
-    temp_max: string;
-    temp_min: string;
-  }
-  wind: {
-    speed: number
-  }
-  weather: [{
-    icon: string,
-  }]
-}
-
-
 export const CityCardMenu: React.FC<CityCardProps> = ({city}) => {
-  const [cityListWeather, setCityListWeather] = useState<WeatherCity>();
+  const [cityListWeather, setCityListWeather] = useState<Weather>();
   const dispatch = useAppDispatch();
 
   useEffect(() => {

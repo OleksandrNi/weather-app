@@ -1,16 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-
-type City = {
-  country: string;
-  name: string;
-  lat: string;
-  lng: string;
-}
-
-type CurrentCityState = {
-  currentCity: City
-}
+import { City, CurrentCityState } from '../types'
 
 const initialState: CurrentCityState = {
   currentCity: {

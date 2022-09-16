@@ -1,31 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Weather, NativeWeatherState } from '../types'
 
-interface NativeCity {
-  name: string;
-  sys: {
-    country: string
-  };
-  main: {
-    feels_like: string;
-    temp: number,
-    humidity: number,
-    pressure: number,
-    temp_max: string;
-    temp_min: string;
-  }
-  wind: {
-    speed: number
-  }
-  weather: [{
-    icon: string,
-  }]
-}
-
-type NativeCityState = {
-  nativeCity: NativeCity
-}
-
-const initialState: NativeCityState= {
+const initialState: NativeWeatherState= {
   nativeCity: {
     name: '',
     sys: {
@@ -53,7 +29,7 @@ const nativeCitySlice = createSlice({
   name: 'nativeCity',
   initialState,
   reducers: {
-    setNativeCity(state, action: PayloadAction<NativeCity>) {
+    setNativeCity(state, action: PayloadAction<Weather>) {
       state.nativeCity = action.payload;
     },
   }

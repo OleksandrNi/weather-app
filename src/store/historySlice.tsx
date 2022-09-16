@@ -1,19 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-type City = {
-  country: string;
-  name: string;
-  lat: string;
-  lng: string;
-}
-
-type History = {
-  history: City[]
-}
+import { City, HistoryCityState } from '../types'
 
 const historyFromLocal: any = localStorage.getItem('historyCities');
 
-const initialState: History = {
+const initialState: HistoryCityState = {
   history: JSON.parse(historyFromLocal) || [],
 }
 

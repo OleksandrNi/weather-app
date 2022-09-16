@@ -11,7 +11,6 @@ import CompressIcon from '@mui/icons-material/Compress';
 import OpacityIcon from '@mui/icons-material/Opacity';
 import AirIcon from '@mui/icons-material/Air';
 import Button from '@mui/material/Button';
-import { setNativeCity } from '../../store/nativeCitySlice';
 
 export const CurrentCity: React.FC = () => {
   const currentCity = useAppSelector(state => state.currentCity.currentCity);
@@ -23,9 +22,9 @@ export const CurrentCity: React.FC = () => {
 
   useEffect(() => {
     if (nativeCity) {
-      setCurrentWeather(nativeCity)
+      setCurrentWeather(nativeCity);
     }
-  },[nativeCity])
+  },[nativeCity]);
 
   useEffect(() => {
     if (currentCity.name.length > 0) {

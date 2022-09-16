@@ -4,16 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { useAppDispatch } from '../../hook';
 import { citiesList } from './cities';
 import { addCurrentCity } from '../../store/currentCitySlice';
+import { City } from '../../types';
 
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-
-interface City {
-  country: string;
-  name: string;
-  lat: string;
-  lng: string;
-}
 
 export const InputForm: React.FC = () => {
   const dispatch = useAppDispatch();
