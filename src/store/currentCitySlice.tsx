@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { City, CurrentCityState } from '../types'
+import { City, CurrentCityState } from '@types'
 
 const initialState: CurrentCityState = {
   currentCity: {

@@ -6,38 +6,41 @@ export interface City {
 }
 
 export interface CurrentCityState {
-  currentCity: City
+  currentCity: City;
 }
 
 export interface HistoryCityState {
-  history: City[]
+  history: City[];
 }
 
 export interface Weather {
   name: string;
   sys: {
-    country: string
+    country: string;
   };
   main: {
     feels_like: string;
-    temp: number,
-    humidity: number,
-    pressure: number,
+    temp: number;
+    humidity: number;
+    pressure: number;
     temp_max: string;
     temp_min: string;
-  }
+  };
   wind: {
-    speed: number
-  }
-  weather: [{
-    icon: string,
-  }]
+    speed: number;
+  };
+  weather: [
+    {
+      icon: string;
+    }
+  ];
 }
 
-export type NativeWeatherState = {
-  nativeCity: Weather
+export interface NativeWeatherState {
+  nativeCity: Weather;
+  status?: string;
 }
 
-export type CityCardProps = {
+export interface CityCardProps {
   city: City;
 }

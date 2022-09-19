@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@component/*": [
+        "src/component/*"
+      ],
+      "@store/*": [
+        "src/store/*"
+      ],
+      "@types": [
+        "src/types.ts"
+      ],
+      "@hook": [
+        "src/hook.ts"
+      ],
+      "@library/*": ["library/src/*"]
+    }
+  }
+}

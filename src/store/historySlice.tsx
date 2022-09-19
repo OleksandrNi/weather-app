@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { City, HistoryCityState } from '../types'
+import { City, HistoryCityState } from '@types'
 
 const historyFromLocal: any = localStorage.getItem('historyCities');
 

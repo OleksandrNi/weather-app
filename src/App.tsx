@@ -2,9 +2,9 @@ import './App.scss';
 
 import { useEffect } from 'react';
 import { useAppSelector } from './hook';
-import {Header} from './component/Header';
-import {CurrentCity} from './component/CurrentCity';
-import {CityList} from './component/CityList';
+import {Header} from '@component/Header';
+import {CurrentCity} from '@component/CurrentCity';
+import {CityList} from '@component/CityList';
 
 
 function App() {
