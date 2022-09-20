@@ -1,10 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { City, HistoryCityState } from '@types';
 
-const historyFromLocal: any = localStorage.getItem('historyCities');
-
 const initialState: HistoryCityState = {
-  history: JSON.parse(historyFromLocal) || [],
+  history: [],
 };
 
 const historySlice = createSlice({

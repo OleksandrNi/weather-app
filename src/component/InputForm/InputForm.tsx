@@ -1,18 +1,20 @@
-import "./InputForm.scss";
+import './InputForm.scss';
 
-import React, { useEffect, useState } from "react";
-import { useAppDispatch } from "@hook";
-import { citiesList } from "./cities";
-import { addCurrentCity } from "@store/currentCitySlice";
-import { City } from "@types";
+import React, { useEffect, useState } from 'react';
+import { useAppDispatch } from '@hook';
 
-import Autocomplete from "@mui/material/Autocomplete";
-import TextField from "@mui/material/TextField";
+import { addCurrentCity } from '@store/currentCitySlice';
+import { City } from '@types';
+
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
+
+import { citiesList } from './cities';
 
 export const InputForm: React.FC = () => {
   const dispatch = useAppDispatch();
 
-  const [queryInput, setQueryInput] = useState("");
+  const [queryInput, setQueryInput] = useState('');
   const [searchCities, setSearchCities] = useState<City[]>([]);
 
   const city: City[] = citiesList.filter((city) =>
@@ -49,7 +51,7 @@ export const InputForm: React.FC = () => {
               />
             );
           }}
-          sx={{ mb: 2, mt: 2, minWidth: 200, color: "white", p: 0 }}
+          sx={{ mb: 2, mt: 2, minWidth: 200, color: 'white', p: 0 }}
         />
       </form>
     </div>

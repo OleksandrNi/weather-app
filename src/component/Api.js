@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const getWeather = (lat, lng) => {
   return axios.get(
