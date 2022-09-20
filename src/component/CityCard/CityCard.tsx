@@ -1,16 +1,16 @@
-import "./CityCard.scss";
+import './CityCard.scss';
 
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { deleteCityInHistory, addCityInHistory } from "@store/historySlice";
-import { callCityFromHistory } from "@store/currentCitySlice";
-import { Weather, CityCardProps } from "@types";
-import { getWeather } from "@component/Api";
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteCityInHistory, addCityInHistory } from '@store/historySlice';
+import { callCityFromHistory } from '@store/currentCitySlice';
+import { Weather, CityCardProps } from '@types';
+import { getWeather } from '@component/Api';
 
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
 
 export const CityCard: React.FC<CityCardProps> = ({ city }) => {
   const [cityListWeather, setCityListWeather] = useState<Weather>();
@@ -37,7 +37,7 @@ export const CityCard: React.FC<CityCardProps> = ({ city }) => {
   return (
     <div className="card">
       {cityListWeather && (
-        <Card sx={{ width: 200, background: "rgba(235, 217, 241, 0.1)" }}>
+        <Card sx={{ width: 200, background: 'rgba(235, 217, 241, 0.1)' }}>
           <div className="card__weather" onClick={callCity}>
             <div className="card__weather-icon">
               <img
@@ -56,7 +56,7 @@ export const CityCard: React.FC<CityCardProps> = ({ city }) => {
               gutterBottom
               variant="h5"
               component="div"
-              sx={{ height: 40, cursor: "pointer" }}
+              sx={{ height: 40, cursor: 'pointer' }}
             >
               {city.name}, {city.country}
             </Typography>
@@ -66,7 +66,7 @@ export const CityCard: React.FC<CityCardProps> = ({ city }) => {
             <Button
               onClick={deleteCity}
               size="medium"
-              sx={{ color: "black", fontWeight: "bold" }}
+              sx={{ color: 'black', fontWeight: 'bold' }}
             >
               delete
             </Button>

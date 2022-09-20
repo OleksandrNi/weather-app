@@ -1,17 +1,15 @@
-import "./CurrentCity.scss";
+import './CurrentCity.scss';
 
-import React from "react";
-import { useEffect, useState } from "react";
-import { useAppSelector, useAppDispatch } from "@hook";
-import { addCityInHistory } from "@store/historySlice";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { useAppSelector, useAppDispatch } from '@hook';
+import { addCityInHistory } from '@store/historySlice';
+import { getWeather } from '@component/Api';
 
-import ThermostatIcon from "@mui/icons-material/Thermostat";
-import CompressIcon from "@mui/icons-material/Compress";
-import OpacityIcon from "@mui/icons-material/Opacity";
-import AirIcon from "@mui/icons-material/Air";
-import Button from "@mui/material/Button";
-import { getWeather } from "@component/Api";
+import ThermostatIcon from '@mui/icons-material/Thermostat';
+import CompressIcon from '@mui/icons-material/Compress';
+import OpacityIcon from '@mui/icons-material/Opacity';
+import AirIcon from '@mui/icons-material/Air';
+import Button from '@mui/material/Button';
 
 export const CurrentCity: React.FC = () => {
   const currentCity = useAppSelector((state) => state.currentCity.currentCity);
@@ -69,7 +67,7 @@ export const CurrentCity: React.FC = () => {
             {currentCity.name.length ? (
               <Button
                 onClick={addInListCity}
-                sx={{ color: "black", fontWeight: "bold" }}
+                sx={{ color: 'black', fontWeight: 'bold' }}
               >
                 add city in list
               </Button>

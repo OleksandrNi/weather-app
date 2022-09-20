@@ -1,16 +1,16 @@
-import "./CityCardMenu.scss";
+import './CityCardMenu.scss';
 
-import React, { useEffect, useState } from "react";
-import { useAppDispatch } from "@hook";
-import { deleteCityInHistory, addCityInHistory } from "@store//historySlice";
-import { callCityFromHistory } from "@store/currentCitySlice";
-import { getWeather } from "@component/Api";
-import { Weather, CityCardProps } from "@types";
+import React, { useEffect, useState } from 'react';
+import { useAppDispatch } from '@hook';
+import { deleteCityInHistory, addCityInHistory } from '@store//historySlice';
+import { callCityFromHistory } from '@store/currentCitySlice';
+import { getWeather } from '@component/Api';
+import { Weather, CityCardProps } from '@types';
 
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
 
 export const CityCardMenu: React.FC<CityCardProps> = ({ city }) => {
   const [cityListWeather, setCityListWeather] = useState<Weather>();
@@ -37,12 +37,12 @@ export const CityCardMenu: React.FC<CityCardProps> = ({ city }) => {
   return (
     <div className="cardMenu">
       {cityListWeather && (
-        <Card sx={{ width: 400, background: "rgba(235, 217, 241, 0.1)" }}>
+        <Card sx={{ width: 400, background: 'rgba(235, 217, 241, 0.1)' }}>
           <CardContent
             sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              padding: "0 10px",
+              display: 'flex',
+              justifyContent: 'space-between',
+              padding: '0 10px',
             }}
           >
             <div>
@@ -51,7 +51,7 @@ export const CityCardMenu: React.FC<CityCardProps> = ({ city }) => {
                 gutterBottom
                 variant="h6"
                 component="div"
-                sx={{ height: 8, cursor: "pointer", fontWeight: "bold" }}
+                sx={{ height: 8, cursor: 'pointer', fontWeight: 'bold' }}
               >
                 {city.name}, {city.country}
               </Typography>
@@ -60,7 +60,7 @@ export const CityCardMenu: React.FC<CityCardProps> = ({ city }) => {
               <Button
                 onClick={deleteCity}
                 size="small"
-                sx={{ color: "black", fontWeight: "bold" }}
+                sx={{ color: 'black', fontWeight: 'bold' }}
               >
                 delete
               </Button>

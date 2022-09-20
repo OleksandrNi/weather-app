@@ -1,8 +1,8 @@
-import "./CityList.scss";
+import './CityList.scss';
 
-import React from "react";
-import { useAppSelector } from "@hook";
-import { CityCard } from "@component/CityCard";
+import React from 'react';
+import { useAppSelector } from '@hook';
+import { CityCard } from '@component/CityCard';
 
 export const CityList: React.FC = () => {
   const historyCities = useAppSelector((state) => state.history.history);

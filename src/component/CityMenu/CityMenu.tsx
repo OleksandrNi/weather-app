@@ -1,15 +1,15 @@
-import "./CityMenu.scss";
+import './CityMenu.scss';
 
-import React from "react";
-import { useAppSelector } from "@hook";
+import React from 'react';
+import { useAppSelector } from '@hook';
 
-import { CityCardMenu } from "@component/CityCardMenu";
+import { CityCardMenu } from '@component/CityCardMenu';
 
-import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
-import List from "@mui/material/List";
-import Box from "@mui/material/Box";
-import Badge from "@mui/material/Badge";
+import Drawer from '@mui/material/Drawer';
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import Box from '@mui/material/Box';
+import Badge from '@mui/material/Badge';
 
 type Anchor = string;
 
@@ -20,7 +20,7 @@ export const CityMenu: React.FC = () => {
     right: false,
   });
 
-  const anchor = "right";
+  const anchor = 'right';
 
   const toggleDrawer = (open: boolean) => () => {
     setState({ ...state, [anchor]: open });
@@ -46,7 +46,7 @@ export const CityMenu: React.FC = () => {
             <Badge badgeContent={historyCities.length} color="primary">
               <Button
                 onClick={toggleDrawer(true)}
-                sx={{ color: "white", fontWeight: "bold", fontSize: "20px" }}
+                sx={{ color: 'white', fontWeight: 'bold', fontSize: '20px' }}
               >
                 Saved cities
               </Button>
