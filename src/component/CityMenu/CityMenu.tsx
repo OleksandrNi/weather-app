@@ -1,7 +1,7 @@
 import './CityMenu.scss';
 
 import React from 'react';
-import { useAppSelector } from '@hook';
+import { useHistoryCitiesSelector } from '@hook';
 
 import { CityCardMenu } from '@component/CityCardMenu';
 
@@ -14,7 +14,7 @@ import Badge from '@mui/material/Badge';
 type Anchor = string;
 
 export const CityMenu: React.FC = () => {
-  const historyCities = useAppSelector((state) => state.history.history);
+  const historyCities = useHistoryCitiesSelector();
 
   const [state, setState] = React.useState({
     right: false,

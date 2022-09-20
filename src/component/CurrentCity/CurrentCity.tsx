@@ -1,7 +1,12 @@
 import './CurrentCity.scss';
 
 import React, { useEffect, useState } from 'react';
-import { useAppSelector, useAppDispatch } from '@hook';
+import { 
+  useAppDispatch, 
+  useHistoryCitiesSelector, 
+  useCurrentCitiesSelector, 
+  useNativeCitiesSelector 
+} from '@hook';
 import { addCityInHistory } from '@store/historySlice';
 import { getWeather } from '@component/Api';
 
@@ -12,9 +17,9 @@ import AirIcon from '@mui/icons-material/Air';
 import Button from '@mui/material/Button';
 
 export const CurrentCity: React.FC = () => {
-  const currentCity = useAppSelector((state) => state.currentCity.currentCity);
-  const nativeCity = useAppSelector((state) => state.nativeCity.nativeCity);
-  const historyCities = useAppSelector((state) => state.history.history);
+  const currentCity = useCurrentCitiesSelector();
+  const nativeCity = useNativeCitiesSelector();
+  const historyCities = useHistoryCitiesSelector();
   const dispatch = useAppDispatch();
 
   const [currentWeather, setCurrentWeather] = useState(nativeCity);

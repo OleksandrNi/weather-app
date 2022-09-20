@@ -1,7 +1,7 @@
 import './Header.scss';
 
 import React, { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '@hook';
+import { useNativeCitiesSelector, useAppDispatch } from '@hook';
 import { fetchNativeCity } from '@store/nativeCitySlice';
 import { CityMenu } from '@component/CityMenu';
 import { InputForm } from '@component/InputForm';
@@ -14,7 +14,8 @@ import AirIcon from '@mui/icons-material/Air';
 
 export const Header: React.FC = () => {
   const dispatch = useAppDispatch();
-  const nativeCity = useAppSelector((state) => state.nativeCity.nativeCity);
+  const nativeCity = useNativeCitiesSelector();
+  ;
 
   useEffect(() => {
     dispatch(fetchNativeCity());
