@@ -15,7 +15,6 @@ import AirIcon from '@mui/icons-material/Air';
 export const Header: React.FC = () => {
   const dispatch = useAppDispatch();
   const nativeCity = useNativeCitiesSelector();
-  ;
 
   useEffect(() => {
     dispatch(fetchNativeCity());
